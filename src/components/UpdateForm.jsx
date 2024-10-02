@@ -3,7 +3,7 @@ import { useDataFetcher } from '../hooks/useDataFetcher';
 import TextField1 from './TextFields/TextField1';
 import CreateButton from './buttons/CreateButton';
 
-const UpdateForm = ({ entityId, entityType, fields, apiEndpoint, onUpdateSuccess }) => {
+const UpdateForm = ({ entityId, entityType, fields, apiEndpoint, onUpdateSuccess, Back }) => {
     const { data, loading, error, fetchData, setData } = useDataFetcher(`${apiEndpoint}/${entityType}/${entityId}`);
     const [formData, setFormData] = useState({});
 
@@ -38,7 +38,7 @@ const UpdateForm = ({ entityId, entityType, fields, apiEndpoint, onUpdateSuccess
                 return response.json();
             })
             .then((data) => {
-                if (data.success) {
+                if (data.ok) {
                     onUpdateSuccess(data.updatedEntity); // Trigger parent update success
                 } else {
                     throw new Error('Update failed: ' + data.message);
@@ -47,6 +47,7 @@ const UpdateForm = ({ entityId, entityType, fields, apiEndpoint, onUpdateSuccess
             .catch((error) => {
                 console.error('Error updating event:', error);
             });
+            Back();
     };
 
     if (loading) return <p>Loading...</p>;

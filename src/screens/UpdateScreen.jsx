@@ -1,7 +1,8 @@
 import React from 'react';
 import UpdateForm from '../components/UpdateForm';
 
-const UpdateScreen = ({ selectedEvent, apiEndpoint, onUpdateSuccess }) => {
+const UpdateScreen = ({ selectedEvent, apiEndpoint, onUpdateSuccess, Back }) => {
+
     return (
         <div>
             <h2>Update Event</h2>
@@ -17,6 +18,7 @@ const UpdateScreen = ({ selectedEvent, apiEndpoint, onUpdateSuccess }) => {
                 ]}
                 apiEndpoint={apiEndpoint}
                 onUpdateSuccess={onUpdateSuccess}
+                Back={Back}
             />
         </div>
     );

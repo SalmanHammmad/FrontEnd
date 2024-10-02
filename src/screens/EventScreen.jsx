@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CreateEvent from '../components/event/createEvent.jsx';
 import Events from '../components/event/Events';
 import UpdateScreen from './UpdateScreen';
@@ -38,7 +38,7 @@ const EventManager = () => {
     return (
         <div className="event-manager-container">
             <h1 className="event-manager-header">EVENT KRAO</h1>
-
+            <DummyData onEventCreated={handleRefresh}/>
             {!selectedEvent ? (
                 <>
                     <section className="event-manager-section">
@@ -62,11 +62,13 @@ const EventManager = () => {
                         <Events refreshKey={refreshKey} onUpdateEvent={handleUpdateEvent} />
                     </section>
                 </>
+
             ) : (
                 <UpdateScreen
                     selectedEvent={selectedEvent}
                     apiEndpoint={apiEndpoint}
                     onUpdateSuccess={handleUpdateSuccess}
+                    Back={() => setSelectedEvent(null)}
                 />
             )}
         </div>

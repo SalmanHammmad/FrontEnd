@@ -1,7 +1,7 @@
 // src/components/DummyData.jsx
 import React from 'react';
 
-const DummyData = () => {
+const DummyData = ({onEventCreated}) => {
     const apiEndpoint = import.meta.env.VITE_API_URL + '/events'; // Adjust the endpoint as needed
 
     // Updated dummy data for insertion
@@ -157,6 +157,8 @@ const DummyData = () => {
 
             if (responses.every((response) => response.ok)) {
                 alert('Dummy data added successfully!');
+                onEventCreated(); // Trigger a refresh after adding dummy data
+                
             } else {
                 alert('Failed to add some of the dummy data.');
             }
