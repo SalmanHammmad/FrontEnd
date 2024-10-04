@@ -34,7 +34,7 @@ const Events = ({ refreshKey, onUpdateEvent }) => {
                             <div className="event-header">
                                 <div className="event-main-info">
                                     <h3 className="event-title">{event.title}</h3>
-                                    <EditButton onClick={() => onUpdateEvent(event)} />
+                                    <EditButton onClick={() => onUpdateEvent(event._id)} />
                                     <DeleteData route="events" Id={event._id} onDelete={handleDelete} />
                                     <button
                                         className="toggle-details-button"

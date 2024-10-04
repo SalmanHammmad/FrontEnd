@@ -3,7 +3,7 @@ import { useDataFetcher } from '../hooks/useDataFetcher';
 import TextField1 from './TextFields/TextField1';
 import CreateButton from './buttons/CreateButton';
 
-const UpdateForm = ({ entityId, entityType, fields, apiEndpoint, onUpdateSuccess, Back }) => {
+const UpdateForm = ({ entityId, entityType, fields, apiEndpoint, onUpdateSuccess}) => {
     const { data, loading, error, fetchData, setData } = useDataFetcher(`${apiEndpoint}/${entityType}/${entityId}`);
     const [formData, setFormData] = useState({});
 
@@ -47,11 +47,10 @@ const UpdateForm = ({ entityId, entityType, fields, apiEndpoint, onUpdateSuccess
             .catch((error) => {
                 console.error('Error updating event:', error);
             });
-            Back();
+            // Back();
     };
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error fetching data: {error}</p>;
+
 
     return (
         <form onSubmit={handleSubmit}>

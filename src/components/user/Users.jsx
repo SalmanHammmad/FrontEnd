@@ -5,8 +5,7 @@ import EditButton from "../buttons/EditButton";
 import { useDataFetcher } from "../../hooks/useDataFetcher";
 import DeleteData from "../DeleteData";
 import Rating from "@mui/material/Rating";
-import { Link } from 'react-router-dom'; // Import Link for navigation
-
+import { Link } from "react-router-dom"; // Import Link for navigation
 
 const Users = ({ refreshKey, onUpdateUser }) => {
   const apiURL = import.meta.env.VITE_API_URL;
@@ -50,15 +49,11 @@ const Users = ({ refreshKey, onUpdateUser }) => {
                     className="user-avatar"
                   />{" "}
                   {/* Avatar image */}
-                  
-               
-                    <Link to={`/user/${user._id}`} className="user-name">
-    {user.name}
-</Link>
-
-                   
+                  <Link to={`/users/${user._id}`} className="user-name">
+                    {user.name}
+                  </Link>
                   {/* Display user name */}
-                  <EditButton onClick={() => onUpdateUser(user)} />
+                  <EditButton onClick={() => onUpdateUser(user._id)} />
                   <DeleteData
                     route="users"
                     Id={user._id}
@@ -75,8 +70,10 @@ const Users = ({ refreshKey, onUpdateUser }) => {
                     )}
                   </button>
                 </div>
-                {user.profile && user.profile.bio && (  // Check if bio exists
-                                        <p>{user.profile.bio}</p>)}
+                {user.profile &&
+                  user.profile.bio && ( // Check if bio exists
+                    <p>{user.profile.bio}</p>
+                  )}
                 {/* Display user bio */}
               </div>
               {expandedUserId === user._id && (
@@ -84,9 +81,9 @@ const Users = ({ refreshKey, onUpdateUser }) => {
                   <p>
                     <strong>ID:</strong> {user._id}
                   </p>
-                    <p>
-                        <strong>Email:</strong> {user.email}
-                    </p>
+                  <p>
+                    <strong>Email:</strong> {user.email}
+                  </p>
                   <p>
                     <Rating
                       name="half-rating-read"

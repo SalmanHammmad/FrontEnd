@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import './SearchUser.css';
 import DeleteButton2 from '../buttons/DeleteButton2';
 import EditButton2 from '../buttons/EditButton2';
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
 
 
-const SearchEvent= ({ onUpdateUser, onDeleteUser }) => {
-  const [refreshKey, setRefreshKey] = useState(0);
+const SearchUser= ({ onUpdateUser, onDeleteUser }) => {
+ 
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -33,7 +35,7 @@ const SearchEvent= ({ onUpdateUser, onDeleteUser }) => {
     try {
       setLoading(true); // Optionally set loading state
       await onDeleteUser(userId); // Wait for the deletion to complete
-      setRefreshKey((prevKey) => prevKey + 1); // Trigger refresh
+      setSearchResults((prevResults) => prevResults.filter(user => user._id !== userId)); // Update
     } catch (err) {
       setError('Error deleting user');
     } finally {
@@ -41,12 +43,7 @@ const SearchEvent= ({ onUpdateUser, onDeleteUser }) => {
     }
   };
 
-  useEffect(() => {
-    const callSearch = async () => {
-      await handleSearch();
-    }
-    if(refreshKey > 0) callSearch();
-  }, [refreshKey]);
+ 
 
   return (
     <div className="search-user-container">
@@ -63,7 +60,7 @@ const SearchEvent= ({ onUpdateUser, onDeleteUser }) => {
         Search
       </button>
 
-      {loading && <p>Loading...</p>}
+      {loading &&  <Box sx={{ width: '100%' }}><LinearProgress color="success"/></Box>}
       {error && <p className="error-message">{error}</p>}
 
       {searchResults.length > 0 && (
@@ -73,7 +70,7 @@ const SearchEvent= ({ onUpdateUser, onDeleteUser }) => {
               <p><strong>Name:</strong> {user.name}</p>
               <p><strong>ID:</strong> {user._id}</p>
               <p><strong>Email:</strong> {user.email}</p>
-              <EditButton2 onClick={() => onUpdateUser(user)} />
+              <EditButton2 onClick={() => onUpdateUser(user._id)} />
               <DeleteButton2 onClick={() => handleDelete(user._id)} />
             </li>
           ))}
@@ -87,4 +84,4 @@ const SearchEvent= ({ onUpdateUser, onDeleteUser }) => {
   );
 };
 
-export default SearchEvent;
+export default SearchUser;

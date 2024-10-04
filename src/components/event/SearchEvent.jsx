@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
+
+import React, {useState } from 'react';
 import './SearchEvent.css';
 import DeleteButton2 from '../buttons/DeleteButton2';
 import EditButton2 from '../buttons/EditButton2';
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
+
 
 
 const SearchEvent = ({ onUpdateEvent, onDeleteEvent }) => {
-  const [refreshKey, setRefreshKey] = useState(0);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -31,26 +35,20 @@ const SearchEvent = ({ onUpdateEvent, onDeleteEvent }) => {
 
   const handleDelete = async (eventId) => {
     try {
-      setLoading(true); // Optionally set loading state
-      await onDeleteEvent(eventId); // Wait for the deletion to complete
-      setRefreshKey((prevKey) => prevKey + 1); // Trigger refresh
+      setLoading(true); 
+      await onDeleteEvent(eventId); 
+  
+      setSearchResults((prevResults) => prevResults.filter(event => event._id !== eventId));
     } catch (err) {
       setError('Error deleting event');
     } finally {
-      setLoading(false); // Reset loading state
+      setLoading(false); 
     }
   };
-
-  useEffect(() => {
-    const callSearch = async () => {
-      await handleSearch();
-    }
-    if(refreshKey > 0) callSearch();
-  }, [refreshKey]);
-
+  
   return (
     <div className="search-event-container">
-      <h2>Search Event</h2>
+      
       <input
         type="text"
         placeholder="Search by name or ID"
@@ -63,7 +61,7 @@ const SearchEvent = ({ onUpdateEvent, onDeleteEvent }) => {
         Search
       </button>
 
-      {loading && <p>Loading...</p>}
+      {loading &&  <Box sx={{ width: '100%' }}><LinearProgress color="success"/></Box>}
       {error && <p className="error-message">{error}</p>}
 
       {searchResults.length > 0 && (
@@ -76,7 +74,7 @@ const SearchEvent = ({ onUpdateEvent, onDeleteEvent }) => {
               <p><strong>Description:</strong> {event.description}</p>
               <p><strong>Start Date:</strong> {event.startDate}</p>
               <p><strong>End Date:</strong> {event.endDate}</p>
-              <EditButton2 onClick={() => onUpdateEvent(event)} />
+              <EditButton2 onClick={() => onUpdateEvent(event._id)} />
               <DeleteButton2 onClick={() => handleDelete(event._id)} />
             </li>
           ))}
