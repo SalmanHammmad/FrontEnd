@@ -4,10 +4,10 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import CreateEvent from '../components/event/CreateEvent';
 import Events from '../components/event/Events';
 import SearchEvent from '../components/event/SearchEvent';
-import DummyData from '../components/DummyData';
 import UpdateScreenE from './UpdateScreenE';
 import { deleteEventById } from '../api/eventApi';  
 import './EventScreen.css';
+import Navbar from '../components/Navbar';
 
 const EventManager = () => {
     const [refreshKey, setRefreshKey] = useState(0);
@@ -34,8 +34,8 @@ const EventManager = () => {
     return (
         <div className="event-manager-container">
             <h1 className="event-manager-header">EVENT MANAGER</h1>
-            <DummyData onEventCreated={handleRefresh} />
-            
+            <Navbar refreshList={handleRefresh} />
+
             <Routes>
                 <Route
                     path="/"
