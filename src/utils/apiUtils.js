@@ -8,6 +8,7 @@ export const apiRequest = async (url, method = 'GET', body = null) => {
         body: body ? JSON.stringify(body) : null,
     };
     const response = await fetch(url, options);
+    console.log(response)
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }

@@ -1,14 +1,24 @@
 import { useState } from 'react';
+import { apiRequest } from '../utils/apiUtils';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterScreen = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    // Implement your registration logic here
-    console.log('Name:', name, 'Email:', email, 'Password:', password);
+    try {
+        const data = await apiRequest(`${import.meta.env.VITE_API_URL}/users/register`, 'POST', { name, email, password });
+        console.log('registered');
+        localStorage.setItem('user', JSON.stringify(data));
+        navigate('/');
+      } catch (error) {
+        console.error('Error registering in:', error);
+      }
+
   };
 
   return (

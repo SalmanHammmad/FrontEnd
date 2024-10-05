@@ -1,13 +1,22 @@
 import { useState } from 'react';
+import { apiRequest } from '../utils/apiUtils';
+import { useNavigate } from 'react-router-dom';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Implement your login logic here
-    console.log('Email:', email, 'Password:', password);
+    try {
+      const data = await apiRequest(`${import.meta.env.VITE_API_URL}/users/login`, 'POST', { email, password });
+      console.log('logged in');
+      localStorage.setItem('user', JSON.stringify(data));
+      navigate('/');
+    } catch (error) {
+      console.error('Error logging in:', error);
+    }
   };
 
   return (
