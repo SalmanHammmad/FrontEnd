@@ -5,6 +5,7 @@ import EventScreen from './screens/event/EventScreen';
 import UpdateScreenE from './screens/event/UpdateScreenE';
 import UpdateScreenU from './screens/user/UpdateScreenU';
 import NoPage from './screens/NoPage';
+import PrivateRoute from './components/ProtectedRoutes';
 
 import PermanentDrawerLeft from './screens/LandingScreen';
 import LoginScreen from './screens/LoginScreen';
@@ -30,9 +31,11 @@ function App() {
         <Route path="/events/*" element={<AdminLayout><EventScreen /></AdminLayout>} />
         <Route path="/events/update/:eventId" element={<UpdateScreenE />} />
 
-        {/* User routes */}
-        <Route path="/users/*" element={<AdminLayout><UserScreen /></AdminLayout>} />
-        <Route path="/users/:userId" element={<AdminLayout><UserProfileScreen /></AdminLayout>} />
+        {/* Protected User routes */}
+        <Route element={<PrivateRoute />}>
+          <Route path="/users/*" element={<AdminLayout><UserScreen /></AdminLayout>} />
+          <Route path="/users/:userId" element={<AdminLayout><UserProfileScreen /></AdminLayout>} />
+        </Route>
 
         <Route path="/users/update/:userId" element={<AdminLayout><UpdateScreenU /></AdminLayout>} />
 

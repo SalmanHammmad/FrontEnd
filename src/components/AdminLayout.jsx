@@ -21,6 +21,9 @@ import Navbar from '../components/Navbar'; // Import Navbar if it's being used
 const drawerWidth = 240;
 
 const AdminLayout = ({ children }) => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  console.log(user)
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -59,7 +62,8 @@ const AdminLayout = ({ children }) => {
             </ListItemButton>
           </ListItem>
           {/* Users Link */}
-          <ListItem disablePadding>
+          { user && (
+            <ListItem disablePadding>
             <ListItemButton component={Link} to="/users">
               <ListItemIcon>
                 <UserIcon />
@@ -67,6 +71,7 @@ const AdminLayout = ({ children }) => {
               <ListItemText primary="Users" />
             </ListItemButton>
           </ListItem>
+          ) }
         </List>
         <Divider />
       </Drawer>
