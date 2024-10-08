@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { apiRequest } from '../utils/apiUtils';
+import { toast } from 'react-toastify';
 
 const Navbar = ({ refreshList: handleRefresh }) => {
     const navigate = useNavigate();
@@ -11,6 +12,7 @@ const Navbar = ({ refreshList: handleRefresh }) => {
             console.log('Logged out');
             localStorage.removeItem('user');
             navigate('/login');
+            toast.success('Logged out successfully');
         } catch (error) {
             console.error('Error logging out:', error);
         }

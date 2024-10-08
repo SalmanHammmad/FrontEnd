@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { apiRequest } from '../utils/apiUtils';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -14,6 +15,7 @@ const LoginScreen = () => {
       console.log('logged in');
       localStorage.setItem('user', JSON.stringify(data));
       navigate('/');
+      toast.success('Logged in successfully');
     } catch (error) {
       console.error('Error logging in:', error);
     }
@@ -21,7 +23,10 @@ const LoginScreen = () => {
 
   return (
     <div>
-      <h2>Login</h2>
+      <div>
+        <button onClick={() => navigate('/')}>Back To Main</button>
+        <h2>Login</h2>
+      </div>
       <form onSubmit={handleLogin}>
         <div>
           <label>Email:</label>

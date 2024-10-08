@@ -6,6 +6,8 @@ import UpdateScreenE from './screens/event/UpdateScreenE';
 import UpdateScreenU from './screens/user/UpdateScreenU';
 import NoPage from './screens/NoPage';
 import PrivateRoute from './components/ProtectedRoutes';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import PermanentDrawerLeft from './screens/LandingScreen';
 import LoginScreen from './screens/LoginScreen';
@@ -21,6 +23,7 @@ function App() {
   return (
    
     <BrowserRouter>
+      <ToastContainer />
       <Routes>
 
         <Route path="/" element={<AdminLayout></AdminLayout>} />
@@ -35,9 +38,8 @@ function App() {
         <Route element={<PrivateRoute />}>
           <Route path="/users/*" element={<AdminLayout><UserScreen /></AdminLayout>} />
           <Route path="/users/:userId" element={<AdminLayout><UserProfileScreen /></AdminLayout>} />
+          <Route path="/users/update/:userId" element={<AdminLayout><UpdateScreenU /></AdminLayout>} />
         </Route>
-
-        <Route path="/users/update/:userId" element={<AdminLayout><UpdateScreenU /></AdminLayout>} />
 
         {/* Auth Routes */}
         <Route path="/login" element={<LoginScreen />} />

@@ -22,7 +22,6 @@ const drawerWidth = 240;
 
 const AdminLayout = ({ children }) => {
   const user = JSON.parse(localStorage.getItem('user'));
-  console.log(user)
 
   return (
     <Box sx={{ display: 'flex' }}>

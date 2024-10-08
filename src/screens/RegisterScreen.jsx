@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { apiRequest } from '../utils/apiUtils';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const RegisterScreen = () => {
   const [name, setName] = useState('');
@@ -15,6 +16,7 @@ const RegisterScreen = () => {
         console.log('registered');
         localStorage.setItem('user', JSON.stringify(data));
         navigate('/');
+        toast.success('Registered successfully');
       } catch (error) {
         console.error('Error registering in:', error);
       }
@@ -23,7 +25,10 @@ const RegisterScreen = () => {
 
   return (
     <div>
-      <h2>Register</h2>
+      <div>
+        <button onClick={() => navigate('/')}>Back To Main</button>
+        <h2>Register</h2>
+      </div>
       <form onSubmit={handleRegister}>
         <div>
           <label>Name:</label>
