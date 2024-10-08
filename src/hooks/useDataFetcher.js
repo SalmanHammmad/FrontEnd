@@ -8,7 +8,12 @@ export const useDataFetcher = (url) => {
     const fetchData = async () => {
         setLoading(true);
         try {
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include',
+            });
             if (!response.ok) {
                 throw new Error('Error fetching data');
             }

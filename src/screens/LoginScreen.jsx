@@ -10,6 +10,10 @@ const LoginScreen = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    if(!email || !password) {
+      toast.error('Please fill in all fields');
+      return;
+    }
     try {
       const data = await apiRequest(`${import.meta.env.VITE_API_URL}/users/login`, 'POST', { email, password });
       console.log('logged in');

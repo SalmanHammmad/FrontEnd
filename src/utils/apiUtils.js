@@ -5,6 +5,7 @@ export const apiRequest = async (url, method = 'GET', body = null) => {
         headers: {
             'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: body ? JSON.stringify(body) : null,
     };
     const response = await fetch(url, options);

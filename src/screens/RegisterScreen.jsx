@@ -11,6 +11,10 @@ const RegisterScreen = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    if(!name || !email || !password) {
+      toast.error('Please fill in all fields');
+      return;
+    }
     try {
         const data = await apiRequest(`${import.meta.env.VITE_API_URL}/users/register`, 'POST', { name, email, password });
         console.log('registered');
