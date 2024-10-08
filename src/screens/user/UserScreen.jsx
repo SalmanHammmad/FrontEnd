@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import CreateUser from '../components/user/CreateUser.jsx';
-import Users from '../components/user/Users';
+import CreateUser from '../../components/user/CreateUser.jsx';
+import Users from '../../components/user/Users.jsx';
 import UpdateScreenU from './UpdateScreenU';
-import SearchUser from '../components/user/SearchUser';
-import DummyData from '../components/user/DummyDataUser';
-import {deleteUserById} from '../api/userApi';
+import SearchUser from '../../components/user/SearchUser.jsx';
+import DummyData from '../../components/user/DummyDataUser.jsx';
+import {deleteUserById} from '../../api/userApi.js';
 import './UserScreen.css';
 
 const UserScreen = () => {

@@ -1,4 +1,3 @@
-import DummyData from '../components/DummyData';
 import { Link, useNavigate } from 'react-router-dom';
 import { apiRequest } from '../utils/apiUtils';
 
@@ -24,7 +23,7 @@ const Navbar = ({ refreshList: handleRefresh }) => {
         padding: '0 1rem',
     }}>
         <div>
-            <DummyData onEventCreated={handleRefresh} />
+           
         </div>
         <ul style={{
             display: 'flex',
@@ -47,3 +46,4 @@ const Navbar = ({ refreshList: handleRefresh }) => {
 }
 
 export default Navbar
+

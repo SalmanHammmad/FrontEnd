@@ -1,5 +1,5 @@
 import {useState,useEffect } from "react";
-import UpdateForm from "../components/UpdateForm";
+import UpdateForm from "../../components/UpdateForm";
 import { useParams, useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";

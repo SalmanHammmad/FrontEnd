@@ -1,33 +1,40 @@
-// src/App.jsx
 import './App.css';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import EventScreen from './screens/EventScreen';
-import UpdateScreenE from './screens/UpdateScreenE';
-import UpdateScreenU from './screens/UpdateScreenU';
+import EventScreen from './screens/event/EventScreen';
+import UpdateScreenE from './screens/event/UpdateScreenE';
+import UpdateScreenU from './screens/user/UpdateScreenU';
 import NoPage from './screens/NoPage';
-import UserScreen from './screens/UserScreen';
-import UserProfileScreen from './screens/UserProfileScreen';
+
+import PermanentDrawerLeft from './screens/LandingScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 
+import UserScreen from './screens/user/UserScreen';
+import UserProfileScreen from './screens/user/UserProfileScreen';
+
+import AdminLayout from './components/AdminLayout';
+
+
 function App() {
   return (
+   
     <BrowserRouter>
       <Routes>
 
-        <Route path="/" element={<EventScreen />} /> {/* Home route */}
+        <Route path="/" element={<AdminLayout></AdminLayout>} />
+
         {/* Main Event route with nested routes */}
 
         {/* Event routes */}
-        <Route path="/events/*" element={<EventScreen />} />
+        <Route path="/events/*" element={<AdminLayout><EventScreen /></AdminLayout>} />
         <Route path="/events/update/:eventId" element={<UpdateScreenE />} />
 
         {/* User routes */}
-        <Route path="/users/*" element={<UserScreen />} />
-        <Route path="/users/:userId" element={<UserProfileScreen />} />
+        <Route path="/users/*" element={<AdminLayout><UserScreen /></AdminLayout>} />
+        <Route path="/users/:userId" element={<AdminLayout><UserProfileScreen /></AdminLayout>} />
 
-        <Route path="/users/update/:userId" element={<UpdateScreenU />} />
+        <Route path="/users/update/:userId" element={<AdminLayout><UpdateScreenU /></AdminLayout>} />
 
         {/* Auth Routes */}
         <Route path="/login" element={<LoginScreen />} />
@@ -37,6 +44,7 @@ function App() {
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>
+
   );
 }
 
