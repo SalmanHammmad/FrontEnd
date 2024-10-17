@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { apiRequest } from '../utils/apiUtils';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import TextField1 from '../components/TextFields/TextField1';
 
 const RegisterScreen = () => {
   const [name, setName] = useState('');
@@ -35,34 +36,40 @@ const RegisterScreen = () => {
       </div>
       <form onSubmit={handleRegister}>
         <div>
-          <label>Name:</label>
-          <input
-            type="text"
+
+          <TextField1
+            label='Name'
             name='name'
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
+          
+         
         </div>
         <div>
-          <label>Email:</label>
-          <input
-            type="email"
+          <TextField1
+            label='Email'
             name='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
+            required  
+            type={'email'}
           />
+
+          
         </div>
         <div>
-          <label>Password:</label>
-          <input
-            type="password"
+
+          <TextField1
+            label='Password'
             name='password'
             value={password}
+            type={'password'}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+
         </div>
         <button type="submit">Register</button>
       </form>

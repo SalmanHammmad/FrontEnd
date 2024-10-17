@@ -169,7 +169,7 @@ const DummyData = ({onEventCreated}) => {
     };
 
     return (
-        <button onClick={handleInsertDummyData} className="demo-button">
+        <button className="btn btn-secondary"  onClick={handleInsertDummyData} >
             DEMO
         </button>
     );

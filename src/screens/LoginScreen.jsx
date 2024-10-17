@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { apiRequest } from '../utils/apiUtils';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import TextField1 from '../components/TextFields/TextField1';
+
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -28,14 +30,13 @@ const LoginScreen = () => {
   return (
     <div>
       <div>
-        <button onClick={() => navigate('/')}>Back To Main</button>
+        <button className="btn btn-secondary" onClick={() => navigate('/')}>Back To Main</button>
         <h2>Login</h2>
       </div>
       <form onSubmit={handleLogin}>
         <div>
-          <label>Email:</label>
-          <input
-            type="email"
+          <TextField1
+            label='Email'
             name='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -43,16 +44,16 @@ const LoginScreen = () => {
           />
         </div>
         <div>
-          <label>Password:</label>
-          <input
-            type="password"
+          <TextField1
+            label='Password'
             name='password'
             value={password}
+            type={'password'}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button className="btn btn-success"  type="submit">Login</button>
       </form>
     </div>
   );

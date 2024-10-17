@@ -268,7 +268,7 @@ const DummyData = ({ onUserCreated }) => {
     };
 
     return (
-        <button onClick={handleInsertDummyData} className="demo-button">
+        <button onClick={handleInsertDummyData} className="btn btn-secondary">
             DEMO
         </button>
     );

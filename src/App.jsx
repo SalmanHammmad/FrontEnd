@@ -9,7 +9,12 @@ import PrivateRoute from './components/ProtectedRoutes';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import PermanentDrawerLeft from './screens/LandingScreen';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // This includes Popper.js
+
+
+
+import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 
@@ -26,7 +31,7 @@ function App() {
       <ToastContainer />
       <Routes>
 
-        <Route path="/" element={<AdminLayout></AdminLayout>} />
+        <Route path="/" element={<AdminLayout><HomeScreen/></AdminLayout>} />
 
         {/* Main Event route with nested routes */}
 
