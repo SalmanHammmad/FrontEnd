@@ -23,6 +23,8 @@ import UserProfileScreen from './screens/user/UserProfileScreen';
 
 import AdminLayout from './components/AdminLayout';
 
+import EventProfile from './screens/event/EventProfileScreen';
+
 
 function App() {
   return (
@@ -49,7 +51,7 @@ function App() {
         {/* Auth Routes */}
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/register" element={<RegisterScreen />} />
-
+        <Route path="/events/:id" element={<EventProfile />} />
         {/* Catch-all route for 404 */}
         <Route path="*" element={<NoPage />} />
       </Routes>

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import CreateEvent from '../../components/event/CreateEvent';
-import Events from '../../components/event/Events';
+import Events from '../../components/event/events';
 import SearchEvent from '../../components/event/SearchEvent';
 import DummyData from '../../components/DummyData';
 import UpdateScreenE from './UpdateScreenE';

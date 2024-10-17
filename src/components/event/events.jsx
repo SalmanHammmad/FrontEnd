@@ -4,6 +4,7 @@ import './events.css';
 import EditButton from '../buttons/EditButton';
 import { useDataFetcher } from '../../hooks/useDataFetcher';
 import DeleteData from '../DeleteData';
+import LinearProgress from '@mui/material/LinearProgress';
 
 const Events = ({ refreshKey, onUpdateEvent }) => {
     const apiURL = import.meta.env.VITE_API_URL;
@@ -25,7 +26,7 @@ const Events = ({ refreshKey, onUpdateEvent }) => {
 
     return (
         <div className="events-container">
-            {loading && <p>Loading data...</p>}
+            {loading && <LinearProgress />}
             {error && <p className="error-message">Error fetching data: {error}</p>}
             {data && data.length > 0 ? (
                 <ol className="event-list">
@@ -65,7 +66,7 @@ const Events = ({ refreshKey, onUpdateEvent }) => {
                     ))}
                 </ol>
             ) : (
-                <p>No events found</p>
+                <p>No events to display at this time.</p>
             )}
         </div>
     );

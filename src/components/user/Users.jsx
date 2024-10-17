@@ -6,6 +6,8 @@ import { useDataFetcher } from "../../hooks/useDataFetcher";
 import DeleteData from "../DeleteData";
 import Rating from "@mui/material/Rating";
 import { Link } from "react-router-dom"; // Import Link for navigation
+import UserIcon from "@mui/icons-material/AccountCircle";
+import LinearProgress from '@mui/material/LinearProgress';
 
 const Users = ({ refreshKey, onUpdateUser }) => {
   const apiURL = import.meta.env.VITE_API_URL;
@@ -35,7 +37,7 @@ const Users = ({ refreshKey, onUpdateUser }) => {
 
   return (
     <div className="users-container">
-      {loading && <p>Loading data...</p>}
+      {loading && <LinearProgress />}
       {error && <p className="error-message">Error fetching data: {error}</p>}
       {data && data.length > 0 ? (
         <ol className="user-list">
@@ -43,11 +45,14 @@ const Users = ({ refreshKey, onUpdateUser }) => {
             <li key={user._id} className="user-item">
               <div className="user-header">
                 <div className="user-main-info">
+
+                  {
+                  (user.image === undefined || user.image === ""
+                  ) ? (<UserIcon className="user-avatar" sx={{ fontSize: 50 }}  />) : (
                   <img
                     src={user.image}
-                    alt={`https://i.pravatar.cc/150?img=${user._id.slice(-2)}`}
                     className="user-avatar"
-                  />{" "}
+                  />)}
                   {/* Avatar image */}
                   <Link to={`/users/${user._id}`} className="user-name">
                     {user.name}
