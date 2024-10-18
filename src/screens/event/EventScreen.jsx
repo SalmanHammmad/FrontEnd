@@ -34,7 +34,7 @@ const EventManager = () => {
 
     return (
         <div className="event-manager-container">
-            <h1 className="event-manager-header">EVENT MANAGER</h1>
+           
            <DummyData onEventCreated={handleRefresh}/>
           
 

@@ -43,9 +43,9 @@ const AdminLayout = ({ children }) => {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       {/* AppBar with Navbar functionality */}
-      <AppBar
+      <AppBar 
         position="fixed"
-        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+        sx={{  backgroundColor: '#4c714f' ,width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
@@ -99,7 +99,9 @@ const AdminLayout = ({ children }) => {
         </Toolbar>
       </AppBar>
 
+
       {/* Side Drawer */}
+      
       <Drawer
         sx={{
           width: drawerWidth,
@@ -112,8 +114,10 @@ const AdminLayout = ({ children }) => {
         variant="permanent"
         anchor="left"
       >
+        
         <Toolbar />
         <Divider />
+        {user && (
         <List>
           <ListItem disablePadding>
             <ListItemButton component={Link} to="/">
@@ -124,6 +128,7 @@ const AdminLayout = ({ children }) => {
             </ListItemButton>
           </ListItem>
           <Divider />
+          {user && (
           <ListItem disablePadding>
             <ListItemButton component={Link} to="/events">
               <ListItemIcon>
@@ -132,6 +137,7 @@ const AdminLayout = ({ children }) => {
               <ListItemText primary="Events" />
             </ListItemButton>
           </ListItem>
+          )}
           <Divider />
           {user && (
             <ListItem disablePadding>
@@ -144,6 +150,7 @@ const AdminLayout = ({ children }) => {
             </ListItem>
           )}
         </List>
+        )}
       </Drawer>
 
       {/* Main Content Area */}

@@ -34,7 +34,7 @@ const UserScreen = () => {
    
     return (
         <div className="user-manager-container">
-            <h1 className="user-manager-header">USER MANAGER</h1>
+         
             <DummyData onUserCreated={handleRefresh}/>
             
             <Routes>
