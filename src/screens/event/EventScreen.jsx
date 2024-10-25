@@ -43,12 +43,12 @@ const EventManager = () => {
                     path="/"
                     element={
                         <>
-                            <section className="event-manager-section">
+                            {/* <section className="event-manager-section">
                                 <h2>Create Event</h2>
                                 <CreateEvent onEventCreated={handleRefresh} />
                             </section>
 
-                            <hr className="divider" />
+                            <hr className="divider" /> */}
 
                             <section className="event-manager-section">
                                 <SearchEvent onUpdateEvent={handleUpdateEvent} onDeleteEvent={handleDeleteEvent} />
@@ -57,7 +57,7 @@ const EventManager = () => {
                             <hr className="divider" />
 
                             <section className="event-manager-section">
-                                <h2>Events List</h2>
+                             
                                 <Events refreshKey={refreshKey} onUpdateEvent={handleUpdateEvent} />
                             </section>
                         </>

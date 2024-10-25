@@ -12,7 +12,9 @@ const TextField1 = ({required, name, type, value, onChange, label, onBlur,classN
             onBlur={onBlur}
             //  variant="standard"
             variant="outlined"
-            color='secondary'
+            
+            color='info'
+            
             margin='normal'
             // variant='filled'
             fullWidth  // Optional: Makes the field full width
