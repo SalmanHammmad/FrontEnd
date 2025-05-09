@@ -12,7 +12,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // This includes Popper.js
 
-
+import ServiceManager from './screens/NewScreens/ServiceManager';
+import Marquees from './screens/NewScreens/Marquees';
 
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
@@ -20,6 +21,7 @@ import RegisterScreen from './screens/RegisterScreen';
 
 import UserScreen from './screens/user/UserScreen';
 import UserProfileScreen from './screens/user/UserProfileScreen';
+
 
 import AdminLayout from './components/AdminLayout';
 
@@ -41,6 +43,15 @@ function App() {
         <Route path="/events/*" element={<AdminLayout><EventScreen /></AdminLayout>} />
         <Route path="/events/update/:eventId" element={<UpdateScreenE />} />
 
+        <Route path="/marquees/*" element={<AdminLayout><Marquees /></AdminLayout>} />
+        <Route path="/marquees/update/:marqueeId" element={<UpdateScreenE />} />
+        <Route path="/marquees/:marqueeId" element={<AdminLayout><Marquees /></AdminLayout>} />
+
+        <Route path="/services/*" element={<AdminLayout><ServiceManager /></AdminLayout>} />
+        <Route path="/services/update/:serviceId" element={<UpdateScreenU />} />
+        <Route path="/services/:serviceId" element={<AdminLayout><ServiceManager /></AdminLayout>} />
+
+       
         {/* Protected User routes */}
         <Route element={<PrivateRoute />}>
           <Route path="/users/*" element={<AdminLayout><UserScreen /></AdminLayout>} />

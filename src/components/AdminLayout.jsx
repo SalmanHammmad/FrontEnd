@@ -148,6 +148,35 @@ const AdminLayout = ({ children }) => {
                 <ListItemText primary="Users" />
               </ListItemButton>
             </ListItem>
+          )}<Divider />
+          {user && (
+            <ListItem disablePadding>
+              <ListItemButton component={Link} to="/Services">
+                <ListItemIcon>
+                  <UserIcon />
+                </ListItemIcon>
+                <ListItemText primary="Services" />
+              </ListItemButton>
+            </ListItem>
+          )}
+         {user && (
+            <ListItem disablePadding>
+              <ListItemButton component={Link} to="/Marquees">
+                <ListItemIcon>
+                  <UserIcon />
+                </ListItemIcon>
+                <ListItemText primary="Marquees" />
+              </ListItemButton>
+            </ListItem>
+          )}{user && (
+            <ListItem disablePadding>
+              <ListItemButton component={Link} to="/Artists">
+                <ListItemIcon>
+                  <UserIcon />
+                </ListItemIcon>
+                <ListItemText primary="Artists" />
+              </ListItemButton>
+            </ListItem>
           )}
         </List>
         )}
